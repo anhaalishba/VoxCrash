@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>VoxCrash</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💥</text></svg>">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="brand-icon">📞</div>
+    <div>
+      <h1>VoxCrash</h1>
+      <p>Stress-testing voice agents, one weird caller at a time</p>
+    </div>
+  </div>
+  <div class="pill-stats" id="stats"></div>
+</header>
+
+<main>
+  <div class="panel">
+    <div class="panel-head">
+      <h2>Live call</h2>
+      <div class="controls">
+        <div class="dropdown" id="strategyDropdown">
+          <button class="dropdown-btn" id="dropdownBtn" type="button">
+            <span id="dropdownEmoji">🙅</span>
+            <span id="dropdownLabel">Changes their mind</span>
+            <span class="chev-down">▾</span>
+          </button>
+          <div class="dropdown-menu" id="dropdownMenu">
+            <div class="dropdown-item selected" data-value="consent_withdrawal" data-emoji="🙅">
+              <span class="opt-emoji">🙅</span>
+              <div><div class="opt-title">Changes their mind</div><div class="opt-sub">Confirms, then backs out</div></div>
+            </div>
+            <div class="dropdown-item" data-value="entity_correction_ignored" data-emoji="✍️">
+              <span class="opt-emoji">✍️</span>
+              <div><div class="opt-title">Corrects their name</div><div class="opt-sub">Spells it out, twice</div></div>
+            </div>
+            <div class="dropdown-item" data-value="premature_execution" data-emoji="🙈">
+              <span class="opt-emoji">🙈</span>
+              <div><div class="opt-title">Skips a detail</div><div class="opt-sub">Never says how many guests</div></div>
+            </div>
+          </div>
+        </div>
+        <button class="run-btn" id="runBtn">Start call</button>
+        <div class="live-status"><span class="dot" id="wsDot"></span><span id="wsLabel">connecting</span></div>
+      </div>
+    </div>
+    <div class="call-window" id="callWindow">
+      <div class="placeholder">Pick a caller and hit start — you'll hear it too.</div>
+    </div>
+    <div class="live-violation" id="liveViolation">
+      <div class="title" id="liveViolationTitle"></div>
+      <div class="desc" id="liveViolationDesc"></div>
+    </div>
+  </div>
+
+  <div id="content">
+    <div class="empty">Loading…</div>
+  </div>
+</main>
+
+<footer>Reads straight from <code>evidence/</code></footer>
+
+<script src="script.js"></script>
+</body>
+</html>
